@@ -30,7 +30,7 @@
                         <img src="dist/img/avatar2.png" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Mis. Perera</a>
+                        <a href="/profile" class="d-block">Mis. Perera</a>
                     </div>
                 </div>
 
@@ -169,13 +169,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="/addAuthor" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Add new author</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="/listedAuthors" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Manage authors</p>
                                     </a>
@@ -224,7 +224,7 @@
                                 <form method="POST" action="">
                                     @csrf
                                   <div class="card-body">
-                                    <p style="float:left;" class="mr-2">Last Registered Category ID:</p>
+                                    <p style="float:left;" class="mr-2">Last Category ID:</p>
                                     <p style="color: red;">last id display here</p>
                                     <div class="form-group">
                                       <label for="bookId">Category ID</label>

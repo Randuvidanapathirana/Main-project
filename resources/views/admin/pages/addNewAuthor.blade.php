@@ -1,26 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin | Listed Books</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin Panel | UvaLMS</title>
 
-  <!--favicon icons-->
-  <link rel="shortcut icon" href="favicon/icon.png" type="image/x-icon" />
+    {{-- include styles --}}
+    @include('admin.plugins.style')
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
-  <!-- DataTables -->
-  <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
 
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition dark-mode sidebar-mini layout-fixed">
     <div class="wrapper">
         {{-- include header  --}}
         @include('admin/header')
@@ -56,7 +47,7 @@
                         </li>
 
                         <!--user-->
-                        <li class="nav-item">
+                        <li class="nav-item ">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-user"></i>
                                 <p>
@@ -72,7 +63,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="/addUser" class="nav-link ">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Add new user</p>
                                     </a>
@@ -81,7 +72,7 @@
                         </li>
 
                         <!--Books-->
-                        <li class="nav-item menu-open">
+                        <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-book"></i>
                                 <p>
@@ -97,7 +88,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/listed-Books" class="nav-link active">
+                                <a href="/listed-Books" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Manage Books</p>
                                 </a>
@@ -143,7 +134,7 @@
                         </li>
 
                         <!--Categories-->
-                        <li class="nav-item">
+                        <li class="nav-item ">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
@@ -153,7 +144,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="/addCategory" class="nav-link">
+                                    <a href="/addCategory" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Add category</p>
                                     </a>
@@ -168,7 +159,7 @@
                         </li>
 
                         <!--Authors-->
-                        <li class="nav-item">
+                        <li class="nav-item menu-open">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-user"></i>
                                 <p>
@@ -178,7 +169,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="/addAuthor" class="nav-link">
+                                    <a href="/addAuthor" class="nav-link active">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Add new author</p>
                                     </a>
@@ -197,132 +188,78 @@
             </div><!--end Sidebar -->
         </aside><!-- End of Main Sidebar Container -->
 
-        <!-- Content Wrapper. Contains page content -->
+        {{-- page top content --}}
         <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <section class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Listed Books</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-                    <li class="breadcrumb-item active">Listed Books</li>
-                    </ol>
-                </div>
-                </div>
-            </div><!-- /.container-fluid -->
-            </section>
-
-            <!-- Main content -->
-            <section class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">Listed Books Details</h3>
-                            </div>
-                            <!-- /.card-header -->
-                            <div class="card-body">
-                                <table id="example1" class="table table-bordered table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Book ID</th>
-                                            <th>Book Image</th>
-                                            <th>Book Name</th>
-                                            <th>Author Name</th>
-                                            <th>Status</th>
-                                            <th>Option</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($books as $book)
-                                            <tr>
-                                                <td>{{ $book->book_id }}</td>
-                                                <td><img src="{{ $book->book_image }}" alt="{{ $book->book_id }}" width="50px"></td>
-                                                <td>{{ $book->book_name }}</td>
-                                                <td>{{ $book->author_name }}</td>
-                                                @if ( $book->status == "0")
-                                                    <td style="color: green">Available</td>
-                                                @else
-                                                    <td style="color: red">Not Available</td>
-                                                @endif
-                                                <td>
-                                                    <div class="btn-group">
-                                                        <button type="button" class="btn btn-warning">Option</button>
-                                                        <button type="button" class="btn btn-warning dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                                                        <span class="sr-only">Toggle Dropdown</span>
-                                                        </button>
-                                                        <div class="dropdown-menu" role="menu">
-                                                        <a class="dropdown-item" href="#">Edit</a>
-                                                        <a class="dropdown-item" href="#">Remove</a>
-                                                        <a class="dropdown-item" href="#">Add to damage</a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- /.card-body -->
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0">Add New Author</h1>
                         </div>
-                        <!-- /.card -->
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+                                <li class="breadcrumb-item active">Add New Author</li>
+                            </ol>
+                        </div>
                     </div>
-                    <!-- /.col -->
                 </div>
-                <!-- /.row -->
+                <hr>
             </div>
-            <!-- /.container-fluid -->
-            </section>
-            <!-- /.content -->
-        </div>
-        <!-- /.content-wrapper -->
-       
 
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row ml-5">
+                        <div class="col-md-8">
+
+                            @if (session('status'))
+                                <h5 class="alert alert-success">{{ session('status') }}</h5>
+                            @endif
+
+                            <!--form-->
+                            <div class="card card-warning">
+                                <div class="card-header">
+                                  <h3 class="card-title">Add Author</h3>
+                                </div>
+                                <form method="POST" action="">
+                                    @csrf
+                                  <div class="card-body">
+                                    <p style="float:left;" class="mr-2">Last Auther ID:</p>
+                                    <p style="color: red;">last id display here</p>
+                                    <div class="form-group">
+                                      <label for="bookId">Author ID</label>
+                                      <input type="text" name="userid" class="form-control" id="userid" placeholder="Enter User Id" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="bookName">Author Name</label>
+                                        <input type="text" name="bookName" class="form-control" id="username" placeholder="Enter user Name" required>
+                                    </div>
+                                    <div class="form-check">
+                                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                      <label class="form-check-label" for="exampleCheck1">Complete</label>
+                                    </div>
+                                  </div>
+                                  <div class="card-footer">
+                                    <button type="submit" class="btn btn-warning">Submit</button>
+                                  </div>
+                                </form>
+                            </div>
+                            <!--end form-->
+
+                        </div><!--col-->
+
+                    </div><!--row-->
+                </div><!--container-fluid-->
+            </div><!--content-->
+
+        </div><!--content-wrapper-->
 
         {{-- include footer  --}}
         @include('admin/footer')
-        
-    </div>
-    <!-- ./wrapper -->
+    </div><!--wrapper-->
 
-    <!-- jQuery -->
-    <script src="../../plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- DataTables  & Plugins -->
-    <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-    <script src="../../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="../../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-    <script src="../../plugins/jszip/jszip.min.js"></script>
-    <script src="../../plugins/pdfmake/pdfmake.min.js"></script>
-    <script src="../../plugins/pdfmake/vfs_fonts.js"></script>
-    <script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-    <script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
-    <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-    
-    <!-- Uva App -->
-    <script src="dist/js/adminlte.js"></script>
+    {{-- include script --}}
+    @include('admin.plugins.script')
 
-    <!-- Table control script -->
-    <script>
-    $(function () {
-        $("#example1").DataTable({
-        "responsive": true, "lengthChange": false, "autoWidth": false,
-        "buttons": ["copy", "excel", "pdf", "print"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    });
-    </script>
 </body>
 </html>

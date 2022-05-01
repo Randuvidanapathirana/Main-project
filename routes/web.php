@@ -38,19 +38,28 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
 Route::get('/listed-Books',[bookController::class, 'adminBookList'])->name('admin.book.list');
 Route::get('/addBook',[bookController::class, 'getLastBookId'])->name('admin.addbook.page');
 
+Route::view('/profile','admin/profile');
 Route::view('/damaged-Books','admin/pages/damagedBooks');
 Route::view('/issued-Books','admin/pages/issuedBooks');
 Route::view('/borrow-req-Books','admin/pages/borrowReq');
-
-Route::get('/books-gride',[bookController::class, 'userBookList'])->name('user.book.view');
-Route::post('/search-book',[bookController::class, 'bookSearch'])->name('book.search');
-
-Route::view('/subject-books','sub-books');
 Route::view('/userDetails','admin/pages/usersDetails');
 Route::view('/addUser','admin/pages/addNewuser');
 Route::view('/issueNewBook','admin/pages/issueNewBook');
 Route::view('/addCategory','admin/pages/addCategory');
 Route::view('/listedCategories','admin/pages/listedCategories');
+Route::view('/addAuthor','admin/pages/addNewAuthor');
+Route::view('/listedAuthors','admin/pages/listedAuthors');
+
+//user routes
+
+Route::get('/books-gride',[bookController::class, 'userBookList'])->name('user.book.view');
+Route::post('/search-book',[bookController::class, 'bookSearch'])->name('book.search');
+
+Route::view('/subject-books','sub-books');
+
+
+
+
 
 
 

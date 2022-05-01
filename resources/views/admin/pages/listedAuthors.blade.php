@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin | Listed Books</title>
+  <title>Admin | Listed Categories Details</title>
 
   <!--favicon icons-->
   <link rel="shortcut icon" href="favicon/icon.png" type="image/x-icon" />
@@ -24,6 +24,7 @@
     <div class="wrapper">
         {{-- include header  --}}
         @include('admin/header')
+        
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-success elevation-4" style=" background-image: linear-gradient(rgb(36, 36, 36), rgb(4, 0, 224));">
             <!-- School Logo -->
@@ -81,7 +82,7 @@
                         </li>
 
                         <!--Books-->
-                        <li class="nav-item menu-open">
+                        <li class="nav-item ">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-book"></i>
                                 <p>
@@ -97,7 +98,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/listed-Books" class="nav-link active">
+                                <a href="/listed-Books" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Manage Books</p>
                                 </a>
@@ -143,7 +144,7 @@
                         </li>
 
                         <!--Categories-->
-                        <li class="nav-item">
+                        <li class="nav-item menu-open">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
@@ -159,7 +160,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/listedCategories" class="nav-link">
+                                    <a href="/listedCategories" class="nav-link active">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Manage categories</p>
                                     </a>
@@ -204,12 +205,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Listed Books</h1>
+                    <h1>Listed Author Details</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-                    <li class="breadcrumb-item active">Listed Books</li>
+                    <li class="breadcrumb-item active">Listed Author Details</li>
                     </ol>
                 </div>
                 </div>
@@ -223,47 +224,19 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Listed Books Details</h3>
+                                <h3 class="card-title">Listed Author Details</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Book ID</th>
-                                            <th>Book Image</th>
-                                            <th>Book Name</th>
+                                            <th>Author ID</th>
                                             <th>Author Name</th>
-                                            <th>Status</th>
-                                            <th>Option</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($books as $book)
-                                            <tr>
-                                                <td>{{ $book->book_id }}</td>
-                                                <td><img src="{{ $book->book_image }}" alt="{{ $book->book_id }}" width="50px"></td>
-                                                <td>{{ $book->book_name }}</td>
-                                                <td>{{ $book->author_name }}</td>
-                                                @if ( $book->status == "0")
-                                                    <td style="color: green">Available</td>
-                                                @else
-                                                    <td style="color: red">Not Available</td>
-                                                @endif
-                                                <td>
-                                                    <div class="btn-group">
-                                                        <button type="button" class="btn btn-warning">Option</button>
-                                                        <button type="button" class="btn btn-warning dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                                                        <span class="sr-only">Toggle Dropdown</span>
-                                                        </button>
-                                                        <div class="dropdown-menu" role="menu">
-                                                        <a class="dropdown-item" href="#">Edit</a>
-                                                        <a class="dropdown-item" href="#">Remove</a>
-                                                        <a class="dropdown-item" href="#">Add to damage</a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforeach
+                                        
                                     </tbody>
                                 </table>
                             </div>

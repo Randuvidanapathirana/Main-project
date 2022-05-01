@@ -1,26 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin | Listed Books</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin Panel | UvaLMS</title>
 
-  <!--favicon icons-->
-  <link rel="shortcut icon" href="favicon/icon.png" type="image/x-icon" />
-
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
-  <!-- DataTables -->
-  <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+    {{-- include styles --}}
+    @include('admin.plugins.style')
+    <link rel="stylesheet" href="css/profile.css">
 
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
         {{-- include header  --}}
         @include('admin/header')
@@ -34,11 +25,11 @@
             <!-- Sidebar -->
             <div class="sidebar">
                 <!-- Sidebar user panel-->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="user-panel mt-3 mb-3 d-flex">
                     <div class="image">
                         <img src="dist/img/avatar2.png" class="img-circle elevation-2" alt="User Image">
                     </div>
-                    <div class="info">
+                    <div class="info mb-3">
                         <a href="/profile" class="d-block">Mis. Perera</a>
                     </div>
                 </div>
@@ -47,7 +38,7 @@
                 <nav>
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <li class="nav-item">
-                            <a href="/admin" class="nav-link ">
+                            <a href="/admin" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Dashboard
@@ -72,7 +63,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="/addUser" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Add new user</p>
                                     </a>
@@ -81,7 +72,7 @@
                         </li>
 
                         <!--Books-->
-                        <li class="nav-item menu-open">
+                        <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-book"></i>
                                 <p>
@@ -97,7 +88,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/listed-Books" class="nav-link active">
+                                <a href="/listed-Books" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Manage Books</p>
                                 </a>
@@ -197,132 +188,72 @@
             </div><!--end Sidebar -->
         </aside><!-- End of Main Sidebar Container -->
 
-        <!-- Content Wrapper. Contains page content -->
+        {{-- page top content --}}
         <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <section class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Listed Books</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-                    <li class="breadcrumb-item active">Listed Books</li>
-                    </ol>
-                </div>
-                </div>
-            </div><!-- /.container-fluid -->
-            </section>
-
-            <!-- Main content -->
-            <section class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">Listed Books Details</h3>
-                            </div>
-                            <!-- /.card-header -->
-                            <div class="card-body">
-                                <table id="example1" class="table table-bordered table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Book ID</th>
-                                            <th>Book Image</th>
-                                            <th>Book Name</th>
-                                            <th>Author Name</th>
-                                            <th>Status</th>
-                                            <th>Option</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($books as $book)
-                                            <tr>
-                                                <td>{{ $book->book_id }}</td>
-                                                <td><img src="{{ $book->book_image }}" alt="{{ $book->book_id }}" width="50px"></td>
-                                                <td>{{ $book->book_name }}</td>
-                                                <td>{{ $book->author_name }}</td>
-                                                @if ( $book->status == "0")
-                                                    <td style="color: green">Available</td>
-                                                @else
-                                                    <td style="color: red">Not Available</td>
-                                                @endif
-                                                <td>
-                                                    <div class="btn-group">
-                                                        <button type="button" class="btn btn-warning">Option</button>
-                                                        <button type="button" class="btn btn-warning dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                                                        <span class="sr-only">Toggle Dropdown</span>
-                                                        </button>
-                                                        <div class="dropdown-menu" role="menu">
-                                                        <a class="dropdown-item" href="#">Edit</a>
-                                                        <a class="dropdown-item" href="#">Remove</a>
-                                                        <a class="dropdown-item" href="#">Add to damage</a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- /.card-body -->
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h1 class="m-0">Admin Profile</h1>
                         </div>
-                        <!-- /.card -->
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+                                <li class="breadcrumb-item active">Admin profile</li>
+                            </ol>
+                        </div>
                     </div>
-                    <!-- /.col -->
                 </div>
-                <!-- /.row -->
+                <hr>
             </div>
-            <!-- /.container-fluid -->
+
+            {{-- Main body content --}}
+            <section class="container">
+
+                    <div class=" rounded bg-white mt-2 mb-5">
+                        <div class="row">
+                            <div class="col-md-4 border-right">
+                                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                                    <img class="rounded-circle mt-5" width="150px" src="dist/img/avatar2.png">
+                                    <span class="font-weight-bold">perera</span>
+                                    <span class="text-black-50">perera@mail.com</span>
+                                    <span> </span>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="p-3 py-5">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h4 class="text-right">Profile Settings</h4>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" placeholder="first name" value=""></div>
+                                        <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control" value="" placeholder="surname"></div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" value=""></div>
+                                        <div class="col-md-12"><label class="labels">Address</label><textarea class="form-control" name="address" placeholder="enter address" value=""  cols="30" rows="3"></textarea></div>
+                                        <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" placeholder="enter email" value=""></div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-6"><label class="labels">Age</label><input type="text" class="form-control" placeholder="age" value=""></div>
+                                        <div class="col-md-6"><label class="labels">Gender</label><input type="text" class="form-control" value="" placeholder="gender"></div>
+                                    </div>
+                                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Changes</button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
             </section>
-            <!-- /.content -->
-        </div>
-        <!-- /.content-wrapper -->
-       
-
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
-
+            
+        </div><!--content-wrapper-->
         {{-- include footer  --}}
         @include('admin/footer')
-        
-    </div>
-    <!-- ./wrapper -->
+    </div><!--wrapper-->
 
-    <!-- jQuery -->
-    <script src="../../plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- DataTables  & Plugins -->
-    <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-    <script src="../../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="../../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-    <script src="../../plugins/jszip/jszip.min.js"></script>
-    <script src="../../plugins/pdfmake/pdfmake.min.js"></script>
-    <script src="../../plugins/pdfmake/vfs_fonts.js"></script>
-    <script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-    <script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
-    <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    {{-- include styles --}}
+    @include('admin.plugins.script')
     
-    <!-- Uva App -->
-    <script src="dist/js/adminlte.js"></script>
 
-    <!-- Table control script -->
-    <script>
-    $(function () {
-        $("#example1").DataTable({
-        "responsive": true, "lengthChange": false, "autoWidth": false,
-        "buttons": ["copy", "excel", "pdf", "print"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    });
-    </script>
 </body>
 </html>
