@@ -62,9 +62,9 @@
                                 <div class="col-sm-8">
                                     <div class="navbar-collapse hidden-sm hidden-xs">
                                         <ul class="nav navbar-nav">
-                                            <li class="active"><a href="#">Home</a></li>
+                                            <li class="active"><a href="">Home</a></li>
                                             <li><a href="books-gride">Books</a></li>
-                                            <li><a href="/subject-books">Subjects</a></li>
+                                            <li><a href="/ebooks">Ebooks</a></li>
                                             <li class="dropdown">
                                                 <a data-toggle="dropdown" class="dropdown-toggle disabled" href="#">Categories</a>
                                                 <ul class="dropdown-menu">
@@ -109,7 +109,7 @@
                                     <a href="#" class="close"></a>
                                 </li>
                                 <li><a href="/">Home</a></li>
-                                <li><a href="/subject-books">Subjects</a></li>
+                                <li><a href="/ebooks">Ebooks</a></li>
                                 <li class="dropdown">
                                     <a data-toggle="dropdown" class="dropdown-toggle disabled" href="#">Categories</a>
                                     <ul class="dropdown-menu">
@@ -333,7 +333,7 @@
                             <li class="category-item">
                                 <figure>
                                     <img src="{{ $book->book_image }}" alt="New Releaase" />
-                                    <figcaption class="bg-red">
+                                    <figcaption class="bg-pr">
                                         <div class="diamond">
                                             <i class="book"></i>
                                         </div>
@@ -350,9 +350,9 @@
                                             </div>
                                             <p>{{ $book->book_desc }}</p>
                                             @if ( $book->status == "0")
-                                                <p style="color: green">Book is Available to borrow</p>
+                                                <span class="badge badge-info" style="color: black">Book available</span>
                                             @else
-                                                <p style="color: red"> Book is Not Available to borrow</p>
+                                                <span class="badge badge-info" style="color: red">Book not available</span>
                                             @endif
                                             <a href="">Borrow <i class="fa fa-long-arrow-right"></i></a>
                                         </div>

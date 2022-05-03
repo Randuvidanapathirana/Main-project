@@ -70,17 +70,28 @@
                                     <li class="dropdown">
                                         <a data-toggle="dropdown" class="dropdown-toggle disabled" href="#">Categories</a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="#">category 1</a></li>
-                                            <li><a href="#">category 2</a></li>
+                                            <li><a href="#">General Books|සාමාන්‍ය කෘති</a></li>
+                                            <li><a href="#">Philosophy and Psychology|<br>දර්ශනය සහ මනෝ විද්‍යාව</a></li>
+                                            <li><a href="#">Religion|ආගම</a></li>
+                                            <li><a href="#">Language|භාෂාව</a></li>
+                                            <li><a href="#">Natural science and maths|<br>ස්වාභාව විද්‍යාව සහ ගණිතය</a></li>
+                                            <li><a href="#">Technology|තාක්ෂණ විද්‍යා</a></li>
+                                            <li><a href="#">Art|කලා</a></li>
+                                            <li><a href="#">Literature|සාහිත්‍ය</a></li>
+                                            <li><a href="#">Geography|භූගෝල විද්‍යාව</a></li>
                                         </ul>
                                     </li>
                                     <li class="dropdown">
                                         <a data-toggle="dropdown" class="dropdown-toggle disabled" href="#">languages</a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="#">Sinhala</a></li>
-                                            <li><a href="#">Tamil</a></li>
-                                            <li><a href="#">English</a></li>
-            
+                                            <li><a href="#">American Literature|<br>ඇමෙරිකානු සාහිත්‍ය</a></li>
+                                            <li><a href="#">English Literature|<br>ඉංග්‍රීසි සාහිත්‍ය</a></li>
+                                            <li><a href="#">German literature|<br>ජර්මන් සාහිත්‍ය</a></li>
+                                            <li><a href="#">French literature|<br>ප්‍රංශ සාහිත්‍ය</a></li>
+                                            <li><a href="#">Italian literature|<br>ඉතාලි සාහිත්‍ය</a></li>
+                                            <li><a href="#">Latin literature|<br>ලතින් සාහිත්‍ය</a></li>
+                                            <li><a href="#">Greek literature|<br>ග්‍රීක සාහිත්‍ය</a></li>
+                                            <li><a href="#">spanish literature|<br>ස්පාඤ්ඤ සාහිත්‍ය</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="#">Contact</a></li>
@@ -103,17 +114,28 @@
                                 <li class="dropdown">
                                     <a data-toggle="dropdown" class="dropdown-toggle disabled" href="#">Categories</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="#">category 1</a></li>
-                                        <li><a href="#">category 2</a></li>
+                                        <li><a href="#">General Books|සාමාන්‍ය කෘති</a></li>
+                                        <li><a href="#">Philosophy and Psychology|<br>දර්ශනය සහ මනෝ විද්‍යාව</a></li>
+                                        <li><a href="#">Religion|ආගම</a></li>
+                                        <li><a href="#">Language|භාෂාව</a></li>
+                                        <li><a href="#">Natural science and maths|<br>ස්වාභාව විද්‍යාව සහ ගණිතය</a></li>
+                                        <li><a href="#">Technology|තාක්ෂණ විද්‍යා</a></li>
+                                        <li><a href="#">Art|කලා</a></li>
+                                        <li><a href="#">Literature|සාහිත්‍ය</a></li>
+                                        <li><a href="#">Geography|භූගෝල විද්‍යාව</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown">
                                     <a data-toggle="dropdown" class="dropdown-toggle disabled" href="#">languages</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="#">Sinhala</a></li>
-                                        <li><a href="#">Tamil</a></li>
-                                        <li><a href="#">English</a></li>
-        
+                                        <li><a href="#">American Literature|<br>ඇමෙරිකානු සාහිත්‍ය</a></li>
+                                        <li><a href="#">English Literature|<br>ඉංග්‍රීසි සාහිත්‍ය</a></li>
+                                        <li><a href="#">German literature|<br>ජර්මන් සාහිත්‍ය</a></li>
+                                        <li><a href="#">French literature|<br>ප්‍රංශ සාහිත්‍ය</a></li>
+                                        <li><a href="#">Italian literature|<br>ඉතාලි සාහිත්‍ය</a></li>
+                                        <li><a href="#">Latin literature|<br>ලතින් සාහිත්‍ය</a></li>
+                                        <li><a href="#">Greek literature|<br>ග්‍රීක සාහිත්‍ය</a></li>
+                                        <li><a href="#">spanish literature|<br>ස්පාඤ්ඤ සාහිත්‍ය</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="#">Contact</a></li>

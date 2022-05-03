@@ -4,6 +4,7 @@ use App\Http\Controllers\addMemberController;
 use App\Http\Controllers\bookController;
 use App\Http\Controllers\fileUploadController;
 use App\Http\Controllers\QrCodeController;
+use App\Http\Controllers\testController;
 use App\Http\Controllers\timeTableController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\userListController;
@@ -26,11 +27,13 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
+Route::get('/test',[testController::class, 'getData']); //this is for test
+
+
 Route::get('/',[bookController::class, 'welcomeNewBooks'])->name('user.welcome');
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
     Route::get('/', [timeTableController::class, 'index']);
-    Route::view('/test','admin/test');
     Route::post('/newBook',[bookController::class, 'addNewBook'])->name('book.add_newbook');
 });
 
@@ -55,7 +58,7 @@ Route::view('/listedAuthors','admin/pages/listedAuthors');
 Route::get('/books-gride',[bookController::class, 'userBookList'])->name('user.book.view');
 Route::post('/search-book',[bookController::class, 'bookSearch'])->name('book.search');
 
-Route::view('/subject-books','sub-books');
+Route::view('/ebooks','ebook');
 
 
 
